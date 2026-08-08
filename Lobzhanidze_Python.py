@@ -1,5 +1,4 @@
 import tkinter as tk
-import time
 import re
 
 # 1.Make up an algorithm
@@ -9,12 +8,11 @@ import re
 def save_data():
   
     input_data = input_field.get()
-    time.sleep(1)
     message.delete("1.0", tk.END)
 
     # check whether the code contains purely letters or numbers
 
-    if input_data.isalpha() == True:
+    if input_data.isalpha():
         #Code executed when htere are alphabetical characters
 
         if "John" in input_data:
@@ -24,8 +22,8 @@ def save_data():
             message.insert(tk.END, "There is no such name")
 
            
-    #checking for a presence of an array/ list; An array containing only separated numbers is accepted
-    if ',' in input_data or ' +' in input_data:
+          #checking for a presence of an array/ list; An array containing only separated numbers is accepted
+    elif ',' in input_data or ' +' in input_data:
         message.delete("1.0", tk.END)
         try:
             array = [int(i.strip()) for i in re.split(r'[, " + "]', input_data) if i.strip()]
@@ -35,8 +33,8 @@ def save_data():
         except ValueError:
             message.insert(tk.END, "Enter arrays with numbers separated by commas and/or spaces")
 
-    #code executed if a single number is entered: Checking if it is greater than 7 or not              
-    if input_data.isnumeric() == True:
+        #code executed if a single number is entered: Checking if it is greater than 7 or not              
+    elif input_data.isnumeric() == True:
         num = int(input_data)
         if num > 7:
             message.insert('1.0', "Hello")
