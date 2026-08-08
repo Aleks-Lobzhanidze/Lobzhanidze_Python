@@ -1,5 +1,5 @@
 # Lobzhanidze_Python
-The code and answers for the consideration test is provided in the repository.
+The code and answers for the consideration test is provided in the repository and uploaded file. The code can be run in the editor without major problems. 
 
 # 2.  The provided sequence [((())()(())]] is incorrect because closing and opening brackets are not balanced.
 
