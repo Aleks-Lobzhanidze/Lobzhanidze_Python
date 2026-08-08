@@ -3,66 +3,67 @@ import re
 
 # 1.Make up an algorithm
 
+def main():
 
-#The algorithm executed upon submission of input details
-def save_data():
-  
-    input_data = input_field.get()
-    message.delete("1.0", tk.END)
-
-    # check whether the code contains purely letters or numbers
-
-    if input_data.isalpha():
-        #Code executed when htere are alphabetical characters
-
-        if "John" in input_data:
-            message.insert(tk.END, "Hello, John") 
-            #The input is checked for case
-        else:
-            message.insert(tk.END, "There is no such name")
-
-           
-          #checking for a presence of an array/ list; An array containing only separated numbers is accepted
-    elif ',' in input_data or ' +' in input_data:
+    #The code executed upon submission of input details
+    def save_data():
+        input_data = input_field.get()
         message.delete("1.0", tk.END)
-        try:
-            array = [int(i.strip()) for i in re.split(r'[, " + "]', input_data) if i.strip()]
-            filtered_array = [i for i in array if i % 3 == 0]
-            message.insert(tk.END, f'{  str(filtered_array)}\n Multiples of 3')
-            #If there are only nummber the code sorts and returns multiples of 3 
-        except ValueError:
-            message.insert(tk.END, "Enter arrays with numbers separated by commas and/or spaces")
 
-        #code executed if a single number is entered: Checking if it is greater than 7 or not              
-    elif input_data.isnumeric() == True:
-        num = int(input_data)
-        if num > 7:
-            message.insert('1.0', "Hello")
-        else:
-            pass
+        # check whether the code contains purely letters or numbers
+        if input_data.strip().isalpha():
+            #Code executed when htere are alphabetical characters
+
+            if  input_data.strip() == "John":
+                message.insert(tk.END, "Hello, John") 
+                #The input has to match by case
+            else:
+                message.insert(tk.END, "There is no such name")
+
             
-    input_field.delete(0, tk.END)
+            #checking for a presence of an array/ list; An array containing only separated numbers is accepted
+        elif ',' in input_data or ' +' in input_data:
+            message.delete("1.0", tk.END)
+            try:
+                array = [int(i.strip()) for i in re.split(r'[, " + "]', input_data) if i.strip()]
+                filtered_array = [i for i in array if i % 3 == 0]
+                message.insert(tk.END, f'{  str(filtered_array)}\n Multiples of 3')
+                #If there are only numbers the code sorts and returns multiples of 3 
+            except ValueError:
+                message.insert(tk.END, "Enter arrays with numbers separated by commas and/or spaces")
 
-#Button and widget layout done with tkinter
-root = tk.Tk()
-root.title('Algorithm Input Page')
-root.geometry('300x500') 
+            #code executed if a single number is entered: Checking if it is greater than 7              
+        elif input_data.isnumeric() == True and int(input_data) > 7 :
+                message.insert('1.0', "Hello")
+                       
+        input_field.delete(0, tk.END)
 
-center_frame = tk.Frame(root)
-center_frame.place(relx=0.5, rely=0.3, anchor=tk.CENTER)
+        #Button and widget layout done with tkinter
 
-input_label = tk.Label(center_frame, text="Input Field").grid(row=2, column=2, pady=4)
-input_field = tk.Entry(center_frame, width=30)
-input_field.grid(row=3, column=2, pady=9)
+    
+    # root and alignment configuration
+    root = tk.Tk()
+    root.title('Algorithm Input Page')
+    root.geometry('300x500') 
+    center_frame = tk.Frame(root)
+    center_frame.place(relx=0.5, rely=0.3, anchor=tk.CENTER)
 
-submit_button = tk.Button(center_frame, text="Enter", width=13, height=1, command= save_data)
-submit_button.grid(row=4, column=2, pady=10)
+    input_label = tk.Label(center_frame, text="Input Field")
+    input_label.grid(row=2, column=2, pady=4)
+    input_field = tk.Entry(center_frame, width=30)
+    input_field.grid(row=3, column=2, pady=9)
 
-message = tk.Text(center_frame, height=3, width=40)
-message.grid(row=5, column=2, pady=12, padx= 15)
+    submit_button = tk.Button(center_frame, text="Enter", width=13, height=1, command= save_data)
+    submit_button.grid(row=4, column=2, pady=10)
 
-root.mainloop()
+    message = tk.Text(center_frame, height=5, width=45)
+    message.grid(row=5, column=2, pady=12, padx= 15)
 
+
+    root.mainloop()
+
+if __name__ == '__main__':
+    main()        
 
     
 # 2.  The provided sequence [((())()(())]] is incorrect because closing and opening brackets are not balanced.
