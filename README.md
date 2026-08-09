@@ -1,5 +1,5 @@
 # Lobzhanidze_Python
-The code and answers for the consideration test is provided in the repository and uploaded file. The code can be run in the editor without major problems. The assignment has been completed with basic Python, re and tkinter modules for slightly improved input parsing and to make a interactive screen for interactive inputs and more visible, polished outputs.
+The code and answers for the consideration test is provided in the repository and uploaded file. The code can be run in the editor without major problems. The assignment has been completed with basic Python, re and tkinter modules for slightly improved input parsing and to make a interactive screen for interactive inputs and more visible, polished outputs. There was no prior agreement about which language should be used in the assignment .  
 
 The code takes text and numbers and check whether the input contains numbers or alphabetical characters.
 If you input a single number it checks if the number is greater than 7 or not and displays an appropriate string value- "hello" as text.
